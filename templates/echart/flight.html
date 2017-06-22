@@ -5,17 +5,20 @@
     <title>Title</title>
     <script src="echarts.min.js"></script>
     <script src="http://libs.baidu.com/jquery/2.1.4/jquery.min.js"></script>
+    <script src="http://gallerybox.echartsjs.com/dep/echarts/map/js/world.js"></script>
 </head>
 <body>
-    <div id="main" style="height: 500px;"></div>
+    <div id="main" style="height: 1000px;"></div>
     <script>
+        dataUrl = "http://gallerybox.echartsjs.com/asset/get/s/data-1469162638978-rJDcVXku.json";
         var myChart = echarts.init(document.getElementById('main'));
-        myChart.showLoading();
-        $.get('flight.json', function (data) {
-
+        //myChart.showLoading();
+        $.get("flight.json", function (data) {
+            /*
             setTimeout(function () {
                 myChart.hideLoading();
             }, 500);
+            */
             function getAirportCoord(idx) {
                 return [data.airports[idx][3], data.airports[idx][4]];
             }
@@ -71,15 +74,15 @@
                 }]
             });
             /*
-            echarts.registerMap('china', chinaJson); // 注册地图
+            echarts.registerMap('world', data); // 注册地图
 
             var option = {
                 geo: {
-                  map: 'china'
+                  map: 'world'
                 }
             };
 
-            mapChart.setOption(option);
+            myChart.setOption(option);
             */
 
         });
