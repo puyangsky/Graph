@@ -13,15 +13,18 @@
         dataUrl = "http://gallerybox.echartsjs.com/asset/get/s/data-1469162638978-rJDcVXku.json";
         var myChart = echarts.init(document.getElementById('main'));
         //myChart.showLoading();
-        $.get("flight.json", function (data) {
+        $.get("flight1.json", function (data) {
             /*
             setTimeout(function () {
                 myChart.hideLoading();
             }, 500);
             */
             function getAirportCoord(idx) {
+                //获取经纬度
+                console.log(idx);
                 return [data.airports[idx][3], data.airports[idx][4]];
             }
+
             var routes = data.routes.map(function (airline) {
                 return [
                     getAirportCoord(airline[1]),
@@ -34,13 +37,15 @@
                     text: 'World Flights',
                     left: 'center',
                     textStyle: {
-                        color: '#eee'
+                        color: '#000'
                     }
                 },
-                backgroundColor: '#003',
+                backgroundColor: '#00BFFF',  //地图的背景颜色
                 tooltip: {
                     formatter: function (param) {
+                        console.log("param:" + param.dataIndex);
                         var route = data.routes[param.dataIndex];
+                        console.log("route:" + route);
                         return data.airports[route[1]][1] + ' > ' + data.airports[route[2]][1];
                     }
                 },
@@ -51,8 +56,8 @@
                     silent: true,
                     itemStyle: {
                         normal: {
-                            borderColor: '#003',
-                            color: '#005'
+                            borderColor: '#00B', //地图的边界颜色
+                            color: '#fff' // 地图的颜色
                         }
                     }
                 },
@@ -64,13 +69,14 @@
                     largeThreshold: 100,
                     lineStyle: {
                         normal: {
-                            opacity: 0.05,
-                            width: 0.5,
-                            curveness: 0.3
+                            opacity: 10, //不透明度
+                            width: 1,    //宽度
+                            curveness: 0.1 //弯度
                         }
                     },
-                    // 设置混合模式为叠加
-                    blendMode: 'lighter'
+                    symbol: 'arrow',
+                    // 设置混合模式为叠加"lighter"
+                    blendMode: 'source-over' // 默认为覆盖
                 }]
             });
             /*
