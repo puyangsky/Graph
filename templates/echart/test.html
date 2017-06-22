@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="echarts.min.js"></script>
+    <script src="http://libs.baidu.com/jquery/2.1.4/jquery.min.js"></script>
+</head>
+<body>
+    <div id="main" style="height: 500px;"></div>
+    <script>
+        var myChart = echarts.init(document.getElementById('main'));
+        myChart.showLoading();
+        $.get('flight.json', function (data) {
+
+            setTimeout(function () {
+                myChart.hideLoading();
+            }, 500);
+            function getAirportCoord(idx) {
+                return [data.airports[idx][3], data.airports[idx][4]];
+            }
+            var routes = data.routes.map(function (airline) {
+                return [
+                    getAirportCoord(airline[1]),
+                    getAirportCoord(airline[2])
+                ];
+            });
+
+            myChart.setOption(option = {
+                title: {
+                    text: 'World Flights',
+                    left: 'center',
+                    textStyle: {
+                        color: '#eee'
+                    }
+                },
+                backgroundColor: '#003',
+                tooltip: {
+                    formatter: function (param) {
+                        var route = data.routes[param.dataIndex];
+                        return data.airports[route[1]][1] + ' > ' + data.airports[route[2]][1];
+                    }
+                },
+                geo: {
+                    map: 'world',
+                    left: 0,
+                    right: 0,
+                    silent: true,
+                    itemStyle: {
+                        normal: {
+                            borderColor: '#003',
+                            color: '#005'
+                        }
+                    }
+                },
+                series: [{
+                    type: 'lines',
+                    coordinateSystem: 'geo',
+                    data: routes,
+                    large: true,
+                    largeThreshold: 100,
+                    lineStyle: {
+                        normal: {
+                            opacity: 0.05,
+                            width: 0.5,
+                            curveness: 0.3
+                        }
+                    },
+                    // 设置混合模式为叠加
+                    blendMode: 'lighter'
+                }]
+            });
+            /*
+            echarts.registerMap('china', chinaJson); // 注册地图
+
+            var option = {
+                geo: {
+                  map: 'china'
+                }
+            };
+
+            mapChart.setOption(option);
+            */
+
+        });
+
+    </script>
+
+</body>
+</html>

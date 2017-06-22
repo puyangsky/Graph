@@ -1,0 +1,6 @@
+.idea/*
+.idea
+static/data/*.xlsx
+*/.DS_Store
+./*/*.xlsx
+excel/*.pyc
