@@ -102,23 +102,22 @@
             var series = [];
             var colorMap = {};
             data.forEach(function (item, i) {
-                console.log("item:" + item.start + "\t" + item.end + "\t" + item.weight);
-                if (colorMap.get(item.start) == undefined) {
+                console.log("第" + i + "个item:" + item.start + "\t" + item.end + "\t" + item.weight);
+                if (colorMap[item.start] == undefined) {
                     console.log("Init color for " + item.start);
-                    var colorIndex = math.random() * 14;
-                    colorMap.put(item.start, colorIndex);
+                    colorMap[item.start] = Math.floor(Math.random() * color.length);
                 }else {
-                    console.log("Get color for " + item.start + ", color index: " + colorMap.get(item.start));
+                    console.log("Get color for " + item.start + ", color index: " + colorMap[item.start]);
                 }
                 series.push({
                     name: item.start + "->" + item.end,
                     type: 'lines',
                     zlevel: 1,
                     symbol: ['none', 'arrow'],
-                    symbolSize: item.weight/40.0,
+                    symbolSize: item.weight/45.0,
                     lineStyle: {
                         normal: {
-                            color: color[colorMap.get(item.start)],
+                            color: color[colorMap[item.start]],
                             width: item.weight/150.0,
                             opacity: 1,
                             curveness: 0.2

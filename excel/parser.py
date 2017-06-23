@@ -3,7 +3,6 @@ from __future__ import print_function
 import json
 import xlrd
 import os
-import util
 # reload(sys)
 # sys.setdefaultencoding('utf-8')
 import sys
@@ -89,12 +88,15 @@ def excel(year):
 
 # 解析StartAndEnd.xlsx
 def parseStartAndEnd(filename, year=None, startIndex=0, endIndex=0):
+    if filename is None or len(filename) == 0:
+        eprint("文件名不合法！")
+        return
     if year is None:
         year = 2007.0
     else:
         year = float(year)
     dir_name = os.getcwd() + os.path.sep + 'static' + os.path.sep + 'data' + os.path.sep
-    data = xlrd.open_workbook(dir_name + 'StartAndEnd.xlsx')
+    data = xlrd.open_workbook(dir_name + filename)
     table = data.sheets()[0]
 
     nrows = table.nrows

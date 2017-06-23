@@ -11,7 +11,6 @@ app = Flask(__name__)
 # 文件储存地址
 path = os.getcwd() + os.path.sep + 'static' + os.path.sep + 'data'
 app.config['UPLOADED_FILES_DEST'] = path
-print("path:", path)
 
 files = UploadSet('files', DOCUMENTS)
 configure_uploads(app, files)
@@ -28,23 +27,24 @@ def index():
     return render_template("center.html")
 
 
-@app.route('/submit', methods=['POST'])
+@app.route('/graph', methods=['POST'])
 def submit():
     print ("获取到一个请求")
     filename = files.save(request.files['file'], 'excel', 'file-' + str(time.time()) + '.xlsx')
-    print("上传了文件：", filename)
+    print u"上传了文件：" + filename
     # file_url = files.url(filename)
     # print(file_url)
     year = request.form.get('year')
-    start = int(request.form.get('start'))
-    end = int(request.form.get('end'))
-    if year is None:
-        print("fuck")
+    start = request.form.get('start')
+    end = request.form.get('end')
+    if start is None or end is None or year is None:
+        print("出错啦")
+        return
     print("year=", year)
     print("start=", start)
     print("end=", end)
 
-    parser.parseStartAndEnd(float(year), start, end)
+    parser.parseStartAndEnd(filename, float(year), int(start), int(end))
     return render_template("echart/lines.html", year=year)
 
 
