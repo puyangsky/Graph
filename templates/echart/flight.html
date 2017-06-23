@@ -22,9 +22,9 @@
             function getAirportCoord(idx) {
                 //获取经纬度
                 console.log(idx);
-                return [data.airports[idx][3], data.airports[idx][4]];
+                return [data.airports[idx][1], data.airports[idx][2]];
             }
-
+            //遍历列表，对每个item进行callback中的操作
             var routes = data.routes.map(function (airline) {
                 return [
                     getAirportCoord(airline[1]),
@@ -46,7 +46,7 @@
                         console.log("param:" + param.dataIndex);
                         var route = data.routes[param.dataIndex];
                         console.log("route:" + route);
-                        return data.airports[route[1]][1] + ' > ' + data.airports[route[2]][1];
+                        return data.airports[route[1]][0] + ' > ' + data.airports[route[2]][0];
                     }
                 },
                 geo: {
@@ -62,7 +62,7 @@
                     }
                 },
                 series: [{
-                    type: 'lines',
+                    type: 'graph',
                     coordinateSystem: 'geo',
                     data: routes,
                     large: true,
@@ -74,7 +74,10 @@
                             curveness: 0.1 //弯度
                         }
                     },
+                    //edgeSymbol: ['circle', 'arrow'],
+                    //edgeSymbolSize: [4, 10],
                     symbol: 'arrow',
+                    //showSymbol: 'false',
                     // 设置混合模式为叠加"lighter"
                     blendMode: 'source-over' // 默认为覆盖
                 }]

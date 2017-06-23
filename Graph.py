@@ -3,14 +3,13 @@ from flask import Flask
 from flask import render_template
 from excel import parser
 from flask import request
-from flask import abort, redirect, url_for
 
 app = Flask(__name__)
 
 
-@app.route('/hello')
+@app.route('/lines')
 def hello_world():
-    return 'Hello World!'
+    return render_template("echart/lines.html")
 
 
 @app.route('/')

@@ -1,35 +1,12 @@
 {
-  "airportsFields": [
-    "name",
-    "city",
-    "country",
-    "longitude",
-    "latitude"
-  ],
-  "airlineFields": [
-    "name",
-    "country"
-  ],
   "airports": [
-    ["Goroka", "Goroka", "Papua New Guinea", 145.391881, -6.081689],
-    ["Madang","Madang","Papua New Guinea",145.7887,-5.207083],
-    ["Mount Hagen","Mount Hagen","Papua New Guinea",144.295861,-5.826789],
-    ["Miramichi","Chatham","Canada",-65.449167,47.007778],
-    ["Chilliwack","Chilliwack","Canada",-121.93889,49.152779]
-  ],
-  "airlines": [
-    [
-      "Eurowings",
-      "Germany"
-    ]
+    ["Papua New Guinea", 145.391881, -6.081689],
+    ["Papua New Guinea",145.7887,-5.207083],
+    ["Papua New Guinea",144.295861,-5.826789],
+    ["Canada",-65.449167,47.007778],
+    ["Canada",-121.93889,49.152779]
   ],
   "routes": [
-    [
-      274,
-      0,
-      1
-    ],
-    [1,1,2],
     [1,2,3]
   ]
 }
