@@ -10,8 +10,13 @@
 </head>
 <body>
     <div id="main" style="height: 1000px;"></div>
+    <div id="year" style="display: none">{{ year }}</div>
     <script>
-        var year = 2007
+        var year = $("#year").text();
+        if(isNaN(year)) {
+            alert("输入有误！");
+        }
+        console.log(year);
         var myChart = echarts.init(document.getElementById('main'));
 
         var countryMap = {
@@ -90,27 +95,31 @@
             return res;
         };
 
-
-
         var color = ['#a6c84c', '#ffa022', '#46bee9', '#EE30A7', '#B452CD', '#B03060', '#1E90FF', '#00CED1', '#2F4F4F',
         '#636363','#8DEEEE', '#8B8B00', '#B03060', '#CAFF70'];
 
-
-
-        $.get("static/data/StartAndEnd-2007.json", function (data) {
+        $.get("static/data/StartAndEnd-"+year+".json", function (data) {
             var series = [];
+            var colorMap = {};
             data.forEach(function (item, i) {
                 console.log("item:" + item.start + "\t" + item.end + "\t" + item.weight);
+                if (colorMap.get(item.start) == undefined) {
+                    console.log("Init color for " + item.start);
+                    var colorIndex = math.random() * 14;
+                    colorMap.put(item.start, colorIndex);
+                }else {
+                    console.log("Get color for " + item.start + ", color index: " + colorMap.get(item.start));
+                }
                 series.push({
-                    name: item.start + ' Top10',
+                    name: item.start + "->" + item.end,
                     type: 'lines',
                     zlevel: 1,
                     symbol: ['none', 'arrow'],
-                    symbolSize: item.weight/100.0,
+                    symbolSize: item.weight/40.0,
                     lineStyle: {
                         normal: {
-                            color: color[i],
-                            width: item.weight/100.0,
+                            color: color[colorMap.get(item.start)],
+                            width: item.weight/150.0,
                             opacity: 1,
                             curveness: 0.2
                         }

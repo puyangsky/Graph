@@ -1,0 +1,103 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+ <head>
+  <title> 多行文字实现垂直居中 </title>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <link rel="stylesheet" href="https://cdn.bootcss.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+
+  <style type="text/css">
+    /*垂直居中必备良药*/
+    .vertical{
+        display: -webkit-flex;
+        display: flex;
+        -webkit-align-items: center;
+              align-items: center;
+        -webkit-justify-content: center;
+              justify-content: center;
+    }
+    .container {
+        height: 800px;
+        width: 700px;
+        background: #FFF5EE;
+    }
+    body {
+        background-color: #A4D3EE;
+    }
+    .item{
+        margin: 10px;
+    }
+    .ta-center {
+        text-align: center;
+    }
+      .title{
+          margin-bottom: 50px;
+      }
+      input {
+          width: inherit;
+      }
+      .myform {
+          border:1px solid #FFF;
+          background: #fff;
+      }
+    </style>
+ </head>
+
+ <body class="vertical">
+    <div class="vertical container">
+        <div class="container vertical">
+            <form class="form myform" action="/submit" role="form" method = 'post' enctype="multipart/form-data">
+
+                <div id="legend" class="item">
+                    <h2 class="ta-center title">图像生成</h2>
+                </div>
+
+                <div id="content" class="control-group item">
+                  <label class="control-label">上传Excel文件</label>
+
+                  <!-- File Upload -->
+                  <div class="controls">
+                    <input class="input-file" id="fileInput" name="file" type="file">
+                  </div>
+                </div>
+
+                <div class="control-group item">
+                  <!-- Text input-->
+                  <label class="control-label" for="year">年份</label>
+                  <div class="controls">
+                    <input type="text" size="36" name="year" placeholder="显示某年份的数据" class="input-xlarge">
+                    <p class="help-block"></p>
+                  </div>
+                </div>
+
+            <div class="control-group item">
+
+                  <!-- Text input-->
+                  <label class="control-label" for="sheet">起始行数</label>
+                  <div class="controls">
+                    <input type="text" size="36" name="start" placeholder="从该行开始读取数据" class="input-xlarge">
+                  </div>
+                </div>
+
+            <div class="control-group item">
+
+                  <!-- Text input-->
+                  <label class="control-label" for="end">终止行数</label>
+                  <div class="controls">
+                    <input type="text" size="36" name="end" placeholder="读取到该行截止" class="input-xlarge">
+                  </div>
+                </div><div class="control-group">
+                  <label class="control-label"></label>
+
+                  <!-- Button -->
+                  <div class="controls item ta-center">
+                    <input class="btn btn-primary" type="submit" value="提交"/>
+                  </div>
+                </div>
+            </form>
+        </div>
+    </div>
+    <script src="https://cdn.bootcss.com/jquery/1.12.4/jquery.min.js"></script>
+    <!-- Include all compiled plugins (below), or include individual files as needed -->
+    <script src="https://cdn.bootcss.com/bootstrap/3.3.1/js/bootstrap.js"></script>
+</body>
+</html>

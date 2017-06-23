@@ -15,7 +15,6 @@ def eprint(*args, **kwargs):
 
 class Model(json.JSONEncoder):
     def __init__(self, code, z):
-        super(Model, self).__init__()
         self.code = code
         self.z = z
 
@@ -89,12 +88,12 @@ def excel(year):
 
 
 # 解析StartAndEnd.xlsx
-def parseStartAndEnd(year=None, startIndex=0, endIndex=0):
+def parseStartAndEnd(filename, year=None, startIndex=0, endIndex=0):
     if year is None:
         year = 2007.0
     else:
         year = float(year)
-    dir_name = '/Users/imac/PycharmProjects/Graph/static/data/'
+    dir_name = os.getcwd() + os.path.sep + 'static' + os.path.sep + 'data' + os.path.sep
     data = xlrd.open_workbook(dir_name + 'StartAndEnd.xlsx')
     table = data.sheets()[0]
 

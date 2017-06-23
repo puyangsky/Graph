@@ -5,63 +5,83 @@
     <title>首页</title>
     <link rel="stylesheet" href="https://cdn.bootcss.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
     <style>
-        .myform{
-{#            text-align: center;#}
-        }
+         div#wrap {
+              display:table;
+              border:1px solid #FF0099;
+              background-color:#FFCCFF;
+              width:760px;
+              height:400px;
+              _position:relative;
+              overflow:hidden;
+         }
+         div#subwrap {
+              vertical-align:middle;
+              display:table-cell;
+              _position:absolute;
+              _top:50%;
+         }
+         div#content {
+              _position:relative;
+              _top:-50%;
+         }
     </style>
 </head>
 <body>
-    <div class="container">
-        <form class="form myform" action="/submit" role="form" method = 'post'>
-{#        <fieldset>#}
-          <div id="legend" class="">
-            <legend class="">图像生成</legend>
-          </div>
-        <div class="control-group">
-              <label class="control-label">上传Excel文件</label>
-
-              <!-- File Upload -->
-              <div class="controls">
-                <input class="input-file" id="fileInput" type="file">
+    <div id="wrap">
+        <div id="subwrap">
+        <div class="container">
+            <form class="form myform" action="/submit" role="form" method = 'post'>
+    {#        <fieldset>#}
+              <div id="legend" class="">
+                <legend class="">图像生成</legend>
               </div>
-            </div><div class="control-group">
+            <div id="content" class="control-group">
+                  <label class="control-label">上传Excel文件</label>
 
-              <!-- Text input-->
-              <label class="control-label" for="year">年份</label>
-              <div class="controls">
-                <input type="text" name="year" placeholder="年份（整数）" class="input-xlarge">
-                <p class="help-block"></p>
-              </div>
-            </div>
+                  <!-- File Upload -->
+                  <div class="controls">
+                    <input class="input-file" id="fileInput" type="file">
+                  </div>
+                </div><div class="control-group">
 
-        <div class="control-group">
+                  <!-- Text input-->
+                  <label class="control-label" for="year">年份</label>
+                  <div class="controls">
+                    <input type="text" name="year" placeholder="年份（整数）" class="input-xlarge">
+                    <p class="help-block"></p>
+                  </div>
+                </div>
 
-              <!-- Text input-->
-              <label class="control-label" for="sheet">Sheet Name</label>
-              <div class="controls">
-                <input type="text" name="sheet" placeholder="Sheet Name" class="input-xlarge">
-                <p class="help-block">Excel表格中的Sheet名称</p>
-              </div>
-            </div>
+            <div class="control-group">
 
-        <div class="control-group">
+                  <!-- Text input-->
+                  <label class="control-label" for="sheet">Sheet Name</label>
+                  <div class="controls">
+                    <input type="text" name="sheet" placeholder="Sheet Name" class="input-xlarge">
+                    <p class="help-block">Excel表格中的Sheet名称</p>
+                  </div>
+                </div>
 
-              <!-- Text input-->
-              <label class="control-label" for="column">列名</label>
-              <div class="controls">
-                <input type="text" name="column" placeholder="整数" class="input-xlarge">
-                <p class="help-block">Excel表格中以第几列为核心数据</p>
-              </div>
-            </div><div class="control-group">
-              <label class="control-label"></label>
+            <div class="control-group">
 
-              <!-- Button -->
-              <div class="controls">
-                <input class="btn btn-primary" type="submit" value="提交"/>
-              </div>
-            </div>
-{#        </fieldset>#}
-        </form>
+                  <!-- Text input-->
+                  <label class="control-label" for="column">列名</label>
+                  <div class="controls">
+                    <input type="text" name="column" placeholder="整数" class="input-xlarge">
+                    <p class="help-block">Excel表格中以第几列为核心数据</p>
+                  </div>
+                </div><div class="control-group">
+                  <label class="control-label"></label>
+
+                  <!-- Button -->
+                  <div class="controls">
+                    <input class="btn btn-primary" type="submit" value="提交"/>
+                  </div>
+                </div>
+    {#        </fieldset>#}
+            </form>
+        </div>
+        </div>
     </div>
   <script src="https://cdn.bootcss.com/jquery/1.12.4/jquery.min.js"></script>
     <!-- Include all compiled plugins (below), or include individual files as needed -->
