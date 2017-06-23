@@ -3,7 +3,6 @@
 static/data/*.xlsx
 static/data/excel/*
 static/pic/*
-static/*
 */.DS_Store
 ./*/*.xlsx
 excel/*.pyc
