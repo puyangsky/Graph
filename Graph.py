@@ -1,6 +1,6 @@
 # coding=utf-8
 from flask import Flask
-from flask import render_template
+from flask import render_template, url_for
 from excel import parser
 from flask import request
 import os
@@ -31,7 +31,7 @@ def index():
 def submit():
     print ("获取到一个请求")
     filename = files.save(request.files['file'], 'excel', 'file-' + str(time.time()) + '.xlsx')
-    print u"上传了文件：" + filename
+    # print u"上传了文件：" + filename
     # file_url = files.url(filename)
     # print(file_url)
     year = request.form.get('year')
@@ -51,6 +51,7 @@ def submit():
 @app.route('/test')
 def test():
     year = 2007
+    print url_for('static', filename='world.html')
     return render_template("world.html", year=year)
 
 if __name__ == '__main__':
