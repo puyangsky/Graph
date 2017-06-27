@@ -12,3 +12,10 @@
 
 ## 效果图
 
+首页
+
+![index page](https://github.com/puyangsky/Graph/blob/master/screenshot/index.png?raw=true)
+
+结果
+
+![result](https://github.com/puyangsky/Graph/blob/master/screenshot/res.png?raw=true)
