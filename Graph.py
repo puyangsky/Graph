@@ -34,6 +34,7 @@ def submit():
     # print u"上传了文件：" + filename
     # file_url = files.url(filename)
     # print(file_url)
+    sheet = request.form.get('sheet')
     year = request.form.get('year')
     start = request.form.get('start')
     end = request.form.get('end')
@@ -44,7 +45,7 @@ def submit():
     print("start=", start)
     print("end=", end)
 
-    parser.parseStartAndEnd(filename, float(year), int(start), int(end))
+    parser.parseStartAndEnd(filename, sheet, float(year), int(start), int(end))
     return render_template("echart/lines.html", year=year)
 
 

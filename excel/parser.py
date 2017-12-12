@@ -87,9 +87,8 @@ def excel(year):
 
 
 # 解析StartAndEnd.xlsx
-def parseStartAndEnd(filename, year=None, startIndex=0, endIndex=0):
+def parseStartAndEnd(filename, sheet=None, year=None, startIndex=0, endIndex=0):
     if filename is None or len(filename) == 0:
-        eprint("文件名不合法！")
         return
     if year is None:
         year = 2007.0
@@ -97,11 +96,9 @@ def parseStartAndEnd(filename, year=None, startIndex=0, endIndex=0):
         year = float(year)
     dir_name = os.getcwd() + os.path.sep + 'static' + os.path.sep + 'data' + os.path.sep
     data = xlrd.open_workbook(dir_name + filename)
-    table = data.sheets()[0]
-
+    table = data.sheet_by_index(int(sheet)-1)
     nrows = table.nrows
     if nrows < endIndex or startIndex < 1:
-        eprint("下标输入错误，越界")
         return
     column = 0
     jsonArray = []
@@ -123,6 +120,7 @@ def parseStartAndEnd(filename, year=None, startIndex=0, endIndex=0):
             flow = Flow(row[0], row[1], row[column])
             jsonArray.append(flow.__dict__)
     json.dump(jsonArray, open(dir_name + "StartAndEnd-" + str(int(year)) + ".json", 'w'))
+
 
 if __name__ == '__main__':
     parseStartAndEnd(2007.0, 3, 23)
