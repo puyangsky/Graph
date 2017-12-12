@@ -114,11 +114,11 @@
                     type: 'lines',
                     zlevel: 1,
                     symbol: ['none', 'arrow'],
-                    symbolSize: item.weight/45.0,
+                    symbolSize: item.weight/30.0,
                     lineStyle: {
                         normal: {
                             color: color[colorMap[item.start]],
-                            width: item.weight/150.0,
+                            width: item.weight/100.0,
                             opacity: 1,
                             curveness: 0.2
                         }
@@ -129,7 +129,7 @@
             var option = {
                 backgroundColor: '#71879f',
                 title : {
-                    text: year + '年中国出口到世界各国（地区）的贸易额',
+                    text: year + '年出口增加值国别流向图',
                     subtext: '（单位：亿美元）',
                     left: 'center',
                     textStyle : {

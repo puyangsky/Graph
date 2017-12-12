@@ -7,3 +7,4 @@ static/pic/*
 ./*/*.xlsx
 excel/*.pyc
 .DS_Store
+static/data/*json

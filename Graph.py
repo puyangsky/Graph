@@ -54,5 +54,6 @@ def test():
     print url_for('static', filename='world.html')
     return render_template("world.html", year=year)
 
+
 if __name__ == '__main__':
     app.run()

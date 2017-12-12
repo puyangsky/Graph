@@ -107,10 +107,11 @@ def parseStartAndEnd(filename, year=None, startIndex=0, endIndex=0):
     jsonArray = []
     for i in range(startIndex-2, endIndex):
         row = table.row_values(i)
-        if i == 1:
+        if i == 1 or i == 0:
             for j in range(len(row)):
                 if row[j] == year:
                     column = j
+                    print(str(year) + ' in column: ' + str(j))
         else:
             startCountry = row[0]
             endCountry = row[1]
