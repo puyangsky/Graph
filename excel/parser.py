@@ -116,7 +116,6 @@ def parseStartAndEnd(filename, sheet=None, year=None, startIndex=0, endIndex=0):
                 continue
             if u'其他国家' == endCountry or u'世界' == endCountry:
                 continue
-            print(startCountry, endCountry, row[column])
             flow = Flow(row[0], row[1], row[column])
             jsonArray.append(flow.__dict__)
     json.dump(jsonArray, open(dir_name + "StartAndEnd-" + str(int(year)) + ".json", 'w'))
